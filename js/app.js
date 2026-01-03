@@ -51,6 +51,10 @@
             const key = btn.querySelector(".choice-key");
             if (label) label.textContent = c.label;
             if (key) key.textContent = c.id;
+
+            const sceneChar = document.getElementById("sceneChar");
+if (sceneChar) sceneChar.src = `./img/berblack/${mood}.png`;
+            
         });
     }
 
@@ -169,3 +173,4 @@
 
     document.addEventListener("DOMContentLoaded", boot);
 })();
+
