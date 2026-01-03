@@ -5,7 +5,7 @@
     // - 배포면 "https://너의-vercel-도메인"
 
 
-    const API_BASE = "https://너의프로젝트.vercel.app";
+    const API_BASE = "https://vercel-api-ten-tau.vercel.app";
     // API_BASE를 빈 문자열로 두면, 같은 도메인에서 /api/story 호출 (Vercel과 같은 곳일 때)
 
     async function postStory(state, picked) {
@@ -25,3 +25,4 @@
 
     window.ApiKit = { postStory };
 })();
+
