@@ -300,4 +300,24 @@ html[data-theme="light"] .story-text {
     .scene {
         min-height: 180px;
     }
+
+}
+
+
+.scene{
+  position: relative;
+  overflow: hidden;
+}
+
+.scene-char{
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  transform: translateX(-50%);
+  height: 92%;
+  width: auto;
+  object-fit: contain;
+  pointer-events: none;
+  opacity: 0.98;
+  filter: drop-shadow(0 18px 40px rgba(0,0,0,0.22));
 }
