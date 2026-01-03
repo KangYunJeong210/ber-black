@@ -1,0 +1,143 @@
+<!doctype html>
+<html lang="ko" data-theme="light">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <title>Ver Black | Wizard Choice Story</title>
+    <meta name="description" content="모바일 스토리 선택지 게임 - 베르블랙이 만드는 마법 세계" />
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./css/base.css" />
+    <link rel="stylesheet" href="./css/game.css" />
+    <link rel="stylesheet" href="./css/menu.css" />
+</head>
+
+<body>
+    <div id="app" class="app" aria-label="Story Game">
+
+        <!-- Top HUD -->
+        <header class="hud" aria-label="Top HUD">
+            <div class="hud-left">
+                <div class="avatar-wrap" aria-label="Main character">
+                    <!-- 기본 표정 -->
+                    <img id="avatarImg" class="avatar" src="./img/berblack/neutral.png" alt="베르블랙" />
+                </div>
+                <div class="nameplate" aria-label="Character name">
+                    <span class="name">베르블랙</span>
+                </div>
+            </div>
+
+            <div class="hud-right" aria-label="Stats and menu">
+                <div class="stats" role="group" aria-label="Stats">
+                    <div class="stat" aria-label="체력">
+                        <span class="stat-ic" aria-hidden="true">❤</span>
+                        <span class="stat-txt">체력</span>
+                        <span id="statHp" class="stat-val">7</span>
+                    </div>
+                    <div class="stat" aria-label="행운">
+                        <span class="stat-ic" aria-hidden="true">🍀</span>
+                        <span class="stat-txt">행운</span>
+                        <span id="statLuck" class="stat-val">3</span>
+                    </div>
+                    <div class="stat" aria-label="이성">
+                        <span class="stat-ic" aria-hidden="true">🧠</span>
+                        <span class="stat-txt">이성</span>
+                        <span id="statSanity" class="stat-val">5</span>
+                    </div>
+                </div>
+
+                <button id="menuBtn" class="icon-btn" type="button" aria-label="Open menu" aria-controls="sideMenu"
+                    aria-expanded="false">
+                    <span class="hamburger" aria-hidden="true">🍔</span>
+                </button>
+            </div>
+        </header>
+
+        <!-- Main stage -->
+        <main class="stage" aria-label="Story stage">
+            <!-- 배경(추후 이미지/효과 넣기 쉬움) -->
+            <section class="scene" aria-label="Scene">
+                <div class="scene-overlay" aria-hidden="true"></div>
+            </section>
+
+            <!-- Bottom dialog -->
+            <section class="dialog" aria-label="Story dialog">
+                <div class="dialog-card">
+                    <div class="dialog-top">
+
+                    </div>
+
+                    <div id="storyText" class="story-text" role="article" aria-live="polite">
+                        안개가 얕게 깔린 새벽. 너(베르블랙)는 낯선 봉투 하나를 손에 쥐고 있었다. 빨간 봉랍, 그리고… 문양이 이상하게 익숙하다.
+                    </div>
+
+                    <div class="choices" role="group" aria-label="Choices">
+                        <button class="choice-btn" type="button" data-choice="A">
+                            <span class="choice-key">A</span>
+                            <span class="choice-label">봉투를 바로 뜯는다</span>
+                        </button>
+                        <button class="choice-btn" type="button" data-choice="B">
+                            <span class="choice-key">B</span>
+                            <span class="choice-label">일단 주변을 살핀다</span>
+                        </button>
+                        <button class="choice-btn" type="button" data-choice="C">
+                            <span class="choice-key">C</span>
+                            <span class="choice-label">봉투를 숨기고 나중에 확인한다</span>
+                        </button>
+                    </div>
+
+                    <div class="hint-row" aria-label="Hint">
+                        <span id="statusHint" class="hint">자동 저장됨</span>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Side menu (hamburger) -->
+        <aside id="sideMenu" class="menu" aria-label="Side menu" aria-hidden="true">
+            <div class="menu-backdrop" data-close="1" aria-hidden="true"></div>
+            <div class="menu-panel" role="dialog" aria-modal="true" aria-label="Menu panel">
+                <div class="menu-head">
+                    <strong class="menu-title">메뉴</strong>
+                    <button class="icon-btn close-btn" type="button" aria-label="Close menu" data-close="1">
+                        ✕
+                    </button>
+                </div>
+
+                <div class="menu-body">
+                    <div class="menu-section">
+                        <p class="menu-label">저장</p>
+                        <button id="saveBtn" class="menu-btn" type="button">지금 저장</button>
+                        <button id="resetBtn" class="menu-btn danger" type="button">처음부터</button>
+                    </div>
+
+                    <div class="menu-section">
+                        <p class="menu-label">화면</p>
+                        <div class="toggle-row">
+                            <span class="toggle-txt">다크 모드</span>
+                            <button id="themeToggle" class="toggle" type="button" aria-pressed="false">
+                                <span class="toggle-knob" aria-hidden="true"></span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="menu-section">
+                        <p class="menu-label">정보</p>
+                        <p class="menu-note">
+                            선택지·스토리는 AI가 생성하며, 진행은 자동 저장됩니다.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+    </div>
+
+    <script src="./js/storage.js"></script>
+    <script src="./js/ui.js"></script>
+    <script src="./js/api.js"></script>
+    <script src="./js/app.js"></script>
+</body>
+
+</html>

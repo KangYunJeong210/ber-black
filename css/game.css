@@ -1,0 +1,303 @@
+/* =========================
+   Layout / Game UI
+========================= */
+
+.app {
+    height: 100dvh;
+    /* ✅ 화면 높이에 고정 */
+    overflow: hidden;
+    /* ✅ 내부만 관리 */
+    display: grid;
+    grid-template-rows: auto 1fr;
+}
+
+
+/* HUD */
+.hud {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    padding: calc(10px + var(--safe-top)) 12px 10px;
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    align-items: center;
+
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.22), transparent);
+    backdrop-filter: blur(10px);
+}
+
+.hud-left {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    min-width: 0;
+}
+
+.avatar-wrap {
+    width: 40px;
+    height: 40px;
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--stroke);
+    background: var(--card);
+    box-shadow: var(--shadow);
+    flex: 0 0 auto;
+}
+
+.avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.nameplate {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+    min-width: 0;
+}
+
+.name {
+    font-weight: 700;
+    letter-spacing: -0.2px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* right */
+.hud-right {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.stats {
+    display: flex;
+    gap: 4px;
+    align-items: center;
+}
+
+.stat {
+    display: grid;
+    grid-template-columns: auto auto auto;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 10px;
+    border-radius: 14px;
+    border: 1px solid var(--stroke);
+    background: var(--card);
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.16);
+}
+
+.stat-ic {
+    font-size: 14px;
+    line-height: 1;
+    opacity: 0.9;
+}
+
+.stat-txt {
+    font-size: 12px;
+    color: var(--muted);
+    letter-spacing: -0.2px;
+}
+
+.stat-val {
+    font-weight: 800;
+    font-size: 13px;
+}
+
+/* 햄버거 */
+.hamburger {
+    display: inline-block;
+    width: 18px;
+    height: 12px;
+    position: relative;
+}
+
+.hamburger::before,
+.hamburger::after,
+.hamburger {
+    border-radius: 999px;
+}
+
+.hamburger::before,
+.hamburger::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    /* width: 18px; */
+    /* height: 2px; */
+    /* background: var(--text); */
+    opacity: 0.9;
+}
+
+.hamburger::before {
+    top: 0;
+}
+
+.hamburger::after {
+    bottom: 0;
+}
+
+.hamburger {
+    /* background: var(--text); */
+    /* height: 2px; */
+    opacity: 0.9;
+}
+
+/* Stage */
+.stage {
+    min-height: 0;
+    /* ✅ grid overflow 핵심 */
+    height: 100%;
+    display: grid;
+    /* grid-template-rows: 1fr auto; */
+    /* 위: 배경, 아래: 대사 */
+    gap: 10px;
+    padding: 0 10px calc(10px + var(--safe-bottom));
+    overflow: hidden;
+    /* ✅ stage 밖으로 넘치면 잘라 */
+}
+
+/* 배경 */
+.scene {
+    border: 1px solid var(--stroke);
+    background:
+        radial-gradient(600px 300px at 20% 20%, rgba(157, 183, 255, 0.24), transparent 60%),
+        radial-gradient(600px 300px at 80% 60%, rgba(255, 213, 138, 0.18), transparent 60%),
+        linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02));
+    box-shadow: var(--shadow);
+    position: relative;
+    min-height: 150px;
+    /* ✅ */
+    border-radius: var(--radius);
+    overflow: hidden;
+}
+
+.scene-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(800px 500px at 50% -20%, rgba(255, 255, 255, 0.16), transparent 55%),
+        radial-gradient(800px 500px at 120% 120%, rgba(0, 0, 0, 0.22), transparent 55%);
+    pointer-events: none;
+}
+
+/* Dialog */
+.dialog {
+    display: grid;
+}
+
+.dialog-card {
+    border-radius: var(--radius);
+    border: 1px solid var(--stroke);
+    background: linear-gradient(180deg, var(--card2), var(--card));
+    box-shadow: var(--shadow);
+    padding: 10px;
+}
+
+.dialog-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    /* margin-bottom: 10px; */
+}
+
+.dialog-title {
+    margin: 0;
+    font-size: 14px;
+    letter-spacing: -0.2px;
+    color: var(--muted);
+}
+
+.story-text {
+    font-size: 14px;
+    line-height: 1.65;
+    letter-spacing: -0.2px;
+    padding: 8px;
+    border-radius: 16px;
+    border: 1px solid var(--stroke);
+    background: rgba(0, 0, 0, 0.10);
+}
+
+html[data-theme="light"] .story-text {
+    background: rgba(255, 255, 255, 0.75);
+}
+
+.choices {
+    display: grid;
+    gap: 6px;
+    margin-top: 6px;
+}
+
+.choice-btn {
+    width: 100%;
+    text-align: left;
+    display: grid;
+    grid-template-columns: 28px 1fr;
+    gap: 10px;
+    align-items: center;
+    padding: 4px 8px;
+    border-radius: 18px;
+    border: 1px solid var(--stroke);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    cursor: pointer;
+    box-shadow: 0 10px 26px rgba(0, 0, 0, 0.14);
+    transition: transform 0.12s ease, background 0.12s ease;
+}
+
+.choice-btn:hover {
+    transform: translateY(-1px);
+}
+
+.choice-btn:active {
+    transform: translateY(1px);
+}
+
+.choice-key {
+    width: 28px;
+    height: 28px;
+    display: grid;
+    place-items: center;
+    border-radius: 12px;
+    background: rgba(157, 183, 255, 0.22);
+    border: 1px solid rgba(157, 183, 255, 0.35);
+    font-weight: 900;
+    font-size: 12px;
+}
+
+.choice-label {
+    font-size: 14px;
+    line-height: 1.3;
+    letter-spacing: -0.2px;
+}
+
+.hint-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+}
+
+.hint {
+    font-size: 12px;
+    color: var(--muted);
+}
+
+/* 작은 화면 최적화 */
+@media (max-width: 420px) {
+    .stat-txt {
+        display: none;
+    }
+
+    .stat {
+        padding: 4px 6px;
+    }
+
+    .scene {
+        min-height: 180px;
+    }
+}

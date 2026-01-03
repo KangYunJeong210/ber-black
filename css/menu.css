@@ -1,0 +1,161 @@
+/* =========================
+   Side Menu
+========================= */
+
+.menu {
+    position: fixed;
+    inset: 0;
+    z-index: 80;
+    pointer-events: none;
+}
+
+.menu-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+.menu-panel {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: min(360px, 92vw);
+    padding-top: var(--safe-top);
+    background: linear-gradient(180deg, rgba(15, 20, 40, 0.95), rgba(12, 14, 28, 0.92));
+    border-left: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: -18px 0 60px rgba(0, 0, 0, 0.35);
+    transform: translateX(12px);
+    opacity: 0;
+    transition: transform 0.22s ease, opacity 0.22s ease;
+    border-top-left-radius: 22px;
+    border-bottom-left-radius: 22px;
+    overflow: hidden;
+}
+
+html[data-theme="light"] .menu-panel {
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 247, 255, 0.94));
+    border-left: 1px solid rgba(10, 18, 38, 0.10);
+    box-shadow: -18px 0 60px rgba(20, 30, 60, 0.12);
+}
+
+.menu-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 14px 10px;
+}
+
+.menu-title {
+    font-size: 16px;
+    letter-spacing: -0.3px;
+}
+
+.close-btn {
+    padding: 10px 12px;
+}
+
+.menu-body {
+    padding: 10px 14px 16px;
+    display: grid;
+    gap: 14px;
+}
+
+.menu-section {
+    border: 1px solid var(--stroke);
+    background: var(--card);
+    border-radius: 18px;
+    padding: 12px;
+}
+
+.menu-label {
+    margin: 0 0 10px;
+    font-size: 12px;
+    color: var(--muted);
+}
+
+.menu-btn {
+    width: 100%;
+    border-radius: 16px;
+    border: 1px solid var(--stroke);
+    background: rgba(255, 255, 255, 0.06);
+    color: var(--text);
+    padding: 12px 12px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+
+.menu-btn:last-child {
+    margin-bottom: 0;
+}
+
+.menu-btn:active {
+    transform: translateY(1px);
+}
+
+.menu-btn.danger {
+    border-color: rgba(255, 120, 120, 0.45);
+    background: rgba(255, 120, 120, 0.10);
+}
+
+/* Toggle */
+.toggle-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+}
+
+.toggle-txt {
+    font-size: 14px;
+}
+
+.toggle {
+    width: 52px;
+    height: 30px;
+    border-radius: 999px;
+    border: 1px solid var(--stroke);
+    background: rgba(255, 255, 255, 0.10);
+    position: relative;
+    cursor: pointer;
+}
+
+.toggle-knob {
+    position: absolute;
+    top: 50%;
+    left: 4px;
+    width: 22px;
+    height: 22px;
+    border-radius: 999px;
+    transform: translateY(-50%);
+    background: rgba(157, 183, 255, 0.95);
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
+    transition: left 0.18s ease;
+}
+
+.toggle[aria-pressed="true"] .toggle-knob {
+    left: 26px;
+}
+
+.menu-note {
+    margin: 0;
+    font-size: 13px;
+    line-height: 1.6;
+    color: var(--muted);
+}
+
+/* OPEN STATE (JS에서 body에 .menu-open 붙일 예정) */
+body.menu-open .menu {
+    pointer-events: auto;
+}
+
+body.menu-open .menu-backdrop {
+    opacity: 1;
+}
+
+body.menu-open .menu-panel {
+    transform: translateX(0);
+    opacity: 1;
+}
